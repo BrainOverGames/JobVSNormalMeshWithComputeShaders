@@ -1,4 +1,4 @@
-# JobVSNormalMeshWithComputeShaders
+# Unity JobVSNormalMeshWithComputeShaders
 Testing the mesh generation &amp; its deformation performances using Unity's Job and normal C# systems along with compute shaders(compute &amp; graphic buffers[WIP])
 
 **NOTE** Required Unity version is 2020.1 or later. 
