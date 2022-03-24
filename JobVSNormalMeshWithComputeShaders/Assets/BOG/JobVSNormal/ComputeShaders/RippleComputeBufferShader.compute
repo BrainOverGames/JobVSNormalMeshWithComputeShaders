@@ -1,0 +1,24 @@
+// Each #kernel tells which function to compile; you can have many kernels
+#pragma kernel RippleWave
+
+RWStructuredBuffer<float3> vertexBuffer;
+float _Time;
+
+[numthreads(64,1,1)]
+void RippleWave(uint3 id : SV_DispatchThreadID)
+{
+    float3 p = asfloat(vertexBuffer[id.x]);
+    float y = 0;
+    float2 p1 = p.xz;
+    //p2 is WaveSourcePositions
+    //change x or z values to see it in action
+    float2 p2 = float2(0.0f, 0.0f);
+    float dist = length(p1 - p2);
+    y += sin(dist * 12 - _Time) / (dist * 20 + 10);
+    ////Assign back
+    // Change the vertex position .y coordinate.
+    vertexBuffer[id.x].y = y;
+    
+    // TODO 
+    //normal calculation issue exist
+}
